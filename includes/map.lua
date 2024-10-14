@@ -2,7 +2,7 @@
 local maps = {}
 maps = require('includes/maps')
 
-local grille = {1}
+local grille = {1,2,3,4,5,6}
 local grille_begin = grille[love.math.random(#grille)]
 
 local map = {

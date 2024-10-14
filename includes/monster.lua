@@ -14,7 +14,6 @@ local MONSTER_STATES = {
     SHOOT = 'shoot',
     CALLINGMOB = 'CALLINGMOB',
     SHIELD = 'SHIELD',
-    SHOOTRANDOM = 'SHOOTRANDOM',
 }
 
 local imageMonster = {
@@ -32,7 +31,7 @@ function CreateMonster(typeMonster)
     local path = 'assets/player/flamme'..typeMonsterElement
     local monsterCreate = spriteManager.CreateSpriteMonster('monster',path,6,48,48,64)
     monsterCreate.x = love.math.random(128, screenWidth-(64*6))
-    monsterCreate.y = love.math.random(128, screenHeight-(64*3))
+    monsterCreate.y = love.math.random(192, screenHeight-(64*3))
     monsterCreate.speed = love.math.random(5,80) / 100
     monsterCreate.range = love.math.random(10,150)
     monsterCreate.target = nil
@@ -62,8 +61,8 @@ function CreateMonsterBoss()
 
     local monsterCreate = spriteManager.CreateSpriteMonster('boss',image,6,106,106,152,typeMonsterElement)
 
-    monsterCreate.x = love.math.random(64, screenWidth-(64*6))
-    monsterCreate.y = love.math.random(64, screenHeight-(64*2))
+    monsterCreate.x = love.math.random(128, screenWidth-(64*6))
+    monsterCreate.y = love.math.random(192, screenHeight-(64*2))
     monsterCreate.speed = love.math.random(5,80) / 100
     monsterCreate.range = love.math.random(10,200)
     monsterCreate.target = nil
@@ -84,7 +83,7 @@ function monster.Load()
     for nMonster=1,17 do
         CreateMonster()
     end
-    local monsterBoss = love.math.random(28,30)
+    local monsterBoss = love.math.random(5,30)
     if monsterBoss > 25 then
         CreateMonsterBoss()
     end

@@ -24,7 +24,6 @@ function CreateHero(choice)
     table.insert(listHeros, hero)
     table.insert(spriteManager.listSprites, hero)
 
-    
     gameState.ID = hero.ID
     gameState.typeHeroElement = typeHeroElement
     gameState.life = hero.life
@@ -45,7 +44,7 @@ function hero.Update(dt,pMap,choice,Monster)
 
         if collideItem(hero,item) and item.pickup == false then
 
-            print("item de type",item.type)
+           -- print("item de type",item.type)
             local angle = math.angle(item.x, item.y, 200, 600)
 
             if item.type == 'changeType' then
@@ -84,9 +83,9 @@ function hero.Update(dt,pMap,choice,Monster)
                     succesDelock:play()
                     sonHeal:play()
 
-                    if hero.life < 100 then
-                        gameState.life = 100
-                        hero.life = 100
+                    if hero.life < 300 then
+                        gameState.life = 300
+                        hero.life = 300
                     else
                         gameState.score = gameState.score + 1
                     end

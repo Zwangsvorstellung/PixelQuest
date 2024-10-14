@@ -135,14 +135,14 @@ end
 
 local timer_to_activate_shield = 0
 local timer_shield_actif = 0
-local timer_shield_activate = love.math.random(5,25)
+local timer_shield_activate = love.math.random(5,15)
 local timer_random_shield = love.math.random(20,25)
 
 function spriteManager.UpdateMonster(MONSTER_STATES,pMonster,hero,dt)
     -- etat conditionnel
     timer_to_activate_shield = timer_to_activate_shield+dt
 
-    if pMonster.isBoss and timer_to_activate_shield > timer_random_shield and pMonster.energie < 40 then
+    if pMonster.isBoss and timer_to_activate_shield > timer_random_shield and pMonster.energie > 20 and pMonster.energie < 40 then
 
         timer_to_activate_shield = timer_to_activate_shield+dt/16
 
@@ -153,7 +153,7 @@ function spriteManager.UpdateMonster(MONSTER_STATES,pMonster,hero,dt)
     if timer_to_activate_shield > 25 then
         timer_to_activate_shield = 0
     end
-    if pMonster.isBoss and pMonster.energie <= 20 and pMonster.switch == false then
+    if pMonster.isBoss and pMonster.energie < 15 and pMonster.switch == false then
         pMonster.state = MONSTER_STATES.SWITCH
     end
 
@@ -279,7 +279,7 @@ function spriteManager.UpdateMonster(MONSTER_STATES,pMonster,hero,dt)
         pMonster.switch = true
     -- boss elite appel du renfort    
     elseif pMonster.state == MONSTER_STATES.CALLINGMOB then
-        for nMonster=1,5 do
+        for nMonster=1,7 do
             CreateMonster("fixe")
         end
         sonSpawn:play()
